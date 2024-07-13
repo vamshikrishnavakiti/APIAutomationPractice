@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="C:/Users/vamshikrishna.v/eclipse-workspace/APIAutomation/APIAutomationPractice"><classes><class name="CRUD.testCreateBookingPost"><methods><include name="testCreateBooking"/></methods></class></classes></test></suite>

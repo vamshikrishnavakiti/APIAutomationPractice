@@ -45,7 +45,22 @@ public class baseTest {
 	}
 	
 	public String getToken() {
-		return null;
+      requestSpecification = RestAssured.given().baseUri(APIContstants.BASE_URL)
+                  .basePath(APIContstants.AUTH_URL);
+
+// Setting up the payload
+      String payload =payloadsManager.setAuthPayload();
+
+      // Getting the Response
+			 response= requestSpecification
+			  .contentType(ContentType.JSON)
+					  .body(payloadsManager.setAuthPayload())
+			  .when().post();
+//Extracting of the Token via De Serialization.
+
+			  String token = payloadsManager.getTokenFromJson(response.asString());
+			 //Verify
+			  return token;
 	}
 	
 }

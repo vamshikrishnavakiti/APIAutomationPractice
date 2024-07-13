@@ -1,9 +1,7 @@
 package com.testingacademy.modules;
 
 import com.google.gson.Gson;
-import com.testingacademy.pojos.Booking;
-import com.testingacademy.pojos.BookingDates;
-import com.testingacademy.pojos.BookingResponse;
+import com.testingacademy.pojos.*;
 
 public class PayloadsManager {
 	Gson gson = new Gson();
@@ -54,7 +52,29 @@ public class PayloadsManager {
 		BookingResponse bookingResponse = gson.fromJson(responseString, BookingResponse.class);
 				return bookingResponse;
 	}
+  public String setAuthPayload(){
+		Auth auth = new Auth();
+		auth.setUsername("admin");
+		auth.setPassword("password123");
+  String jsonPayloadString= gson.toJson(auth);
+		gson= new Gson();
+	  System.out.println("Payload set to"+jsonPayloadString);
+	  return jsonPayloadString;
+  }
+
+  public String getTokenFromJson(String tokenResponse){
+	gson = new Gson();
+	// Response (Json)--> Object Token Response
+	  // De serialization;
+	  TokenResponse tokenResponse1=gson.fromJson(tokenResponse,TokenResponse.class);
+	  return tokenResponse1.getToken();
 
 
+  }
+  public Booking getResponseFromJSON(String getResponse){
+		gson = new Gson();
+		Booking booking = gson.fromJson(getResponse,Booking.class);
+		return booking;
+  }
 
 }
